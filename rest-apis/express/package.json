@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "postinstall": "npx prisma generate",
     "build": "tsc",
-    "start": "node build/index.js",
+    "start": "npx prisma migrate deploy && node build/src/index.js",
     "test": "npx prisma db push && vitest .",
     "dev": "npx prisma db push && nodemon --watch \"src/**\" --ext \"ts,json\" --exec \"ts-node src/index.ts\""
   },

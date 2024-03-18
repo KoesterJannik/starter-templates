@@ -20,13 +20,6 @@ export function errorHandler(
 const app = express();
 
 app.use(express.json());
-const envVars = {
-  PORT: process.env.PORT,
-  NODE_ENV: process.env.NODE_ENV,
-  DATABASE_URL: process.env.DATABASE_URL,
-  JWT_SECRET: process.env.JWT_SECRET,
-};
-console.log(`Loading env vars:, ${JSON.stringify(envVars)}`);
 
 app.get("/", (req, res) => {
   res.send("Hello, world!");
