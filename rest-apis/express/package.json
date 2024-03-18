@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "postinstall": "npx prisma generate",
+    "postinstall": "npx prisma db push && npx prisma generate",
     "build": "tsc",
     "start": "npx prisma migrate deploy && node build/src/index.js",
     "test": "npx prisma db push && vitest .",
