@@ -2,6 +2,7 @@ import "dotenv/config";
 import express, { NextFunction, Request, Response } from "express";
 import authRouter from "./router/auth/authRouter";
 import userRouter from "./router/user/userRouter";
+import cors from "cors";
 
 export function errorHandler(
   err: any,
@@ -20,6 +21,7 @@ export function errorHandler(
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("Hello, world!");
