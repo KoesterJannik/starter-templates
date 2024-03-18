@@ -1,8 +1,8 @@
 import "dotenv/config";
 import { describe, it, expect } from "vitest";
 import request from "supertest";
-import app from "../app";
-import { generateRandomString } from "../../test-utils";
+import app from "../../app";
+import { generateRandomString } from "../../../test-utils";
 import jwt from "jsonwebtoken";
 
 // test the hello world route

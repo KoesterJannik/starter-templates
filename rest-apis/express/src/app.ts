@@ -1,5 +1,7 @@
+import "dotenv/config";
 import express, { NextFunction, Request, Response } from "express";
-import authRouter from "./router/authRouter";
+import authRouter from "./router/auth/authRouter";
+import userRouter from "./router/user/userRouter";
 
 export function errorHandler(
   err: any,
@@ -18,6 +20,13 @@ export function errorHandler(
 const app = express();
 
 app.use(express.json());
+const envVars = {
+  PORT: process.env.PORT,
+  NODE_ENV: process.env.NODE_ENV,
+  DATABASE_URL: process.env.DATABASE_URL,
+  JWT_SECRET: process.env.JWT_SECRET,
+};
+console.log(`Loading env vars:, ${JSON.stringify(envVars)}`);
 
 app.get("/", (req, res) => {
   res.send("Hello, world!");
@@ -25,6 +34,8 @@ app.get("/", (req, res) => {
 const API_PREFIX = "/api/v1";
 
 app.use(`${API_PREFIX}/auth`, authRouter);
+
+app.use(`${API_PREFIX}/users`, userRouter);
 
 app.use(errorHandler);
 

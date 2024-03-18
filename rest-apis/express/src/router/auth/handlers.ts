@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
-import db from "../db";
+import db from "../../db";
 import {
   comparePasswords,
   generateJwtToken,
   hashPassword,
-} from "../auth/auth-utils";
+} from "../../auth/auth-utils";
 import { generateTokenWithUserId } from "./helper-functions";
 
 export async function registerUser(req: Request, res: Response) {
